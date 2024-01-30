@@ -1,11 +1,11 @@
 const int fireSensorDigitalPin = 2;
-const int relayIN1Pin = 7;
+const int relayIN2Pin = 7;
 const int buzzerPin = 8;
 const int fireSensorAnalogPin = A0;
 
 void setup() {
   pinMode(fireSensorDigitalPin, INPUT);
-  pinMode(relayIN1Pin, OUTPUT);
+  pinMode(relayIN2Pin, OUTPUT);
   pinMode(buzzerPin, OUTPUT);
   Serial.begin(9600);
 }
@@ -14,7 +14,7 @@ void loop() {
   int fireSensorDigitalValue = digitalRead(fireSensorDigitalPin);
   if (fireSensorDigitalValue == HIGH) {
     // Fire detected
-    digitalWrite(relayIN1Pin, LOW);
+    digitalWrite(relayIN2Pin, LOW);
     for (int i = 0; i < 10; i++) {
       digitalWrite(buzzerPin, HIGH);
       delay(100);
@@ -28,7 +28,7 @@ void loop() {
     Serial.println(fireSensorAnalogValue);
   } else {
         // Fire Not detected
-    digitalWrite(relayIN1Pin, HIGH);
+    digitalWrite(relayIN2Pin, HIGH);
     digitalWrite(buzzerPin, LOW);
   }
 }
